@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-//Uses Buffers, Vga256(not needed), Palettes
+
+//Manually Added
+using MarioPort;
+using Resources = MarioPort.Properties.Resources;
 
 namespace MarioFiles
 {
@@ -36,17 +39,18 @@ namespace MarioFiles
       public void InitBackGr(byte NewBackGr, byte bClouds)
       {
          int i, j, h;
-         //  X, Y, Z: Real;
-         //  F: Text;
          BackGround = NewBackGr;
-         if(BackGround == 1 || BackGround == 2)
-            move(@BOGEN^, BackGrMap, BackGrMap.Length);
-         else if(BackGround == 3)
-            move(@MOUNT^, BackGrMap, BackGrMap.Length);
-         else if(BackGround == 9)
-            move(@BOGEN7^, BackGrMap, BackGrMap.Length);
-         else if(BackGround == 10)
-            move(@BOGEN26^, BackGrMap, BackGrMap.Length);
+         //----------------------------------------------------------------
+         //@BOGEN and @MOUNT are not bitmaps
+         //----------------------------------------------------------------
+         //if(BackGround == 1 || BackGround == 2)
+         //   move(@BOGEN^, BackGrMap, BackGrMap.Length);
+         //else if(BackGround == 3)
+         //   move(@MOUNT^, BackGrMap, BackGrMap.Length);
+         //else if(BackGround == 9)
+         //   move(@BOGEN7^, BackGrMap, BackGrMap.Length);
+         //else if(BackGround == 10)
+         //   move(@BOGEN26^, BackGrMap, BackGrMap.Length);
          if(BackGround == 1 || BackGround == 9 || BackGround == 10)
             for( i = 0; i <= Max; i++)
               BackGrMap[i] = Convert.ToByte(Height - BackGrMap [i] + 1);
@@ -118,7 +122,7 @@ namespace MarioFiles
 
       public void DrawBricks(int X, int Y, int W, int H)
       {
-         Game.PutImage(X, Y, W, H, @PALBRICK000^);
+         Game.PutImage(X, Y, W, H, Resources.PALBRICK_000);
       }
 
       public void LargeBricks(int X, int Y, int W, int H)
@@ -198,11 +202,11 @@ namespace MarioFiles
       public void Pillar(int X, int Y, int W, int H)
       {
          if(((X / W) % 3) == 0)
-            Game.PutImage (X, Y, W, H, @PalPill000^);
+            Game.PutImage (X, Y, W, H, Resources.PalPill_000);
          else if(((X / W) % 3) == 1)
-            Game.PutImage (X, Y, W, H, @PalPill001^);
+            Game.PutImage (X, Y, W, H, Resources.PalPill_001);
          else if(((X / W) % 3) == 2)
-            Game.PutImage (X, Y, W, H, @PalPill002^);
+            Game.PutImage (X, Y, W, H, Resources.PalPill_002);
       }
 
       public void Windows(int X, int Y, int W, int H)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 //Uses for Buffers needed
+using System.IO;
 
 namespace MarioFiles
 {
